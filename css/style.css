@@ -1,0 +1,23 @@
+.container
+{
+    background-color: #606167;
+    text-align: -webkit-center;
+    margin-top: 50px;
+    padding-top: 10%;
+    padding-bottom: 15%;
+    border-radius: 5%;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border: ridge;
+}
+.displayScreenRow {background-color: #d0d6e1; width: 70%; border-radius: 5px; border: solid; margin-bottom: 4%; height: 100px; align-content: center;}
+input
+{
+    width: 15%;
+    height: 85%;
+    margin-bottom: 3%;
+    border-radius: 20%;
+    border: outset;
+    margin-right: 2%;
+    font-size: xx-large;
+    box-shadow: 1px 1px 1px 1px #ccc;
+}
