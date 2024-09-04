@@ -326,7 +326,7 @@ equalsBttn.addEventListener("click", () =>
 
 clearBttn.addEventListener("click", () =>
 {   
-    displayElement.innerHTML = 0;
+    displayElement.innerHTML = "";
     let value1 = "";
     let value2 = "";
     let value3 = "";
