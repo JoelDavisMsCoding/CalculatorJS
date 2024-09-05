@@ -286,28 +286,49 @@ equalsBttn.addEventListener("click", () =>
     
     for (let i = 0; i < arrEquation.length; i++)
     {
+        if (arrEquation[1] == "*") {equation1 = arrEquation[0] * arrEquation[2];}
+        if (arrEquation[1] == "/") {equation1 = arrEquation[0] / arrEquation[2];}
         if (arrEquation[1] == "+") {equation1 = parseFloat(arrEquation[0]) + parseFloat(arrEquation[2]);}
         if (arrEquation[1] == "-") {equation1 = arrEquation[0] - arrEquation[2];}
-        if (arrEquation[1] == "/") {equation1 = arrEquation[0] / arrEquation[2];}
-        if (arrEquation[1] == "*") {equation1 = arrEquation[0] * arrEquation[2];}
-        if (arrEquation[3] == "+") {equation2 = 0 + parseFloat(arrEquation[4]);}
-        if (arrEquation[3] == "-") {equation2 = 0 - arrEquation[4];}
-        if (arrEquation[3] == "/") {equation2 = 0 / arrEquation[4];}
-        if (arrEquation[3] == "*") {equation2 = (arrEquation[0] * arrEquation[2]) * arrEquation[4];}
-        if (arrEquation[5] == "+") {equation3 = 0 + parseFloat(arrEquation[6]);}
-        if (arrEquation[5] == "-") {equation3 = 0 - arrEquation[6];}
-        if (arrEquation[5] == "/") {equation3 = 0 / arrEquation[6];}
-        if (arrEquation[5] == "*") {equation3 = (arrEquation[0] * arrEquation[2] * arrEquation[4]) * arrEquation[6];}
-        if (arrEquation[7] == "+") {equation4 = 0 + parseFloat(arrEquation[8]);}
-        if (arrEquation[7] == "-") {equation4 = 0 - arrEquation[8];}
-        if (arrEquation[7] == "/") {equation4 = 0 / arrEquation[8];}
-        if (arrEquation[7] == "*") {equation4 = (arrEquation[0] * arrEquation[2] * arrEquation[4] * arrEquation[6]) * arrEquation[8];}
-        if (arrEquation[9] == "+") {equation5 = 0 + parseFloat(arrEquation[9]);}
-        if (arrEquation[9] == "-") {equation5 = 0 - arrEquation[9];}
-        if (arrEquation[9] == "/") {equation5 = 0 / arrEquation[9];}
-        if (arrEquation[9] == "*") {equation5 = (arrEquation[0] * arrEquation[2] * arrEquation[4] * arrEquation[6] * arrEquation[8]) * arrEquation[9];}
+        if (arrEquation[3] == "*") {equation2 = equation1 * arrEquation[4];}
+        if (arrEquation[3] == "/") {equation2 = equation1 / arrEquation[4];}
+        if (arrEquation[3] == "+") {equation2 = equation1 + parseFloat(arrEquation[4]);}
+        if (arrEquation[3] == "-") {equation2 = equation1 - arrEquation[4];}
+        if (arrEquation[5] == "*") {equation3 = equation2 * arrEquation[6];}
+        if (arrEquation[5] == "/") {equation3 = equation2 / arrEquation[6];}
+        if (arrEquation[5] == "+") {equation3 = equation2 + parseFloat(arrEquation[6]);}
+        if (arrEquation[5] == "-") {equation3 = equation2 - arrEquation[6];}
+        if (arrEquation[7] == "*") {equation4 = equation3 * arrEquation[8];}
+        if (arrEquation[7] == "/") {equation4 = equation3 / arrEquation[8];}
+        if (arrEquation[7] == "+") {equation4 = equation3 + parseFloat(arrEquation[8]);}
+        if (arrEquation[7] == "-") {equation4 = equation3 - arrEquation[8];}
+        if (arrEquation[9] == "*") {equation5 = equation4 * arrEquation[9];}
+        if (arrEquation[9] == "/") {equation5 = equation4 / arrEquation[9];}
+        if (arrEquation[9] == "+") {equation5 = equation4 + parseFloat(arrEquation[9]);}
+        if (arrEquation[9] == "-") {equation5 = equation4 - arrEquation[9];}
     }
-    finalCalculation = equation1 + equation2 + equation3 + equation4 + equation5;
+
+    if (equation1 != "")
+    {
+        finalCalculation = equation1
+    }
+    if (equation2 != "")
+    {
+        finalCalculation = equation2
+    }
+    if (equation3 != "")
+    {
+        finalCalculation = equation3
+    }
+    if (equation4 != "")
+    {
+        finalCalculation = equation4
+    }
+    if (equation5 != "")
+    {
+        finalCalculation = equation5
+    }
+
     displayElement.innerHTML = finalCalculation;
 });
 
@@ -334,3 +355,37 @@ clearBttn.addEventListener("click", () =>
     storeNumbsFromButtons = "";
     finalCalculation = "";  
 });
+
+// let firstNum = "";
+// let allBtns = 
+// function buttonListeners()
+// {
+//     for (let i = 0; i < allBtns.length; i++)
+//     {
+//         const element = allBtns[i];
+        
+//         if (allBtns[i].value == "clear")
+//         {allBtns[i].addEventListener("click", clearingDisplay)}
+//         else if (allBtns[i].value == "add" || allBtns[i].value == "subtract" || allBtns[i].value == "divide" || allBtns[i].value == "multiply")
+//         {
+//             allBtns[i].addEventListener("click", setting)
+//         }
+
+//         else
+//         {
+//             allBtns[i].addEventListener("click", () => 
+//             {
+//             display.innerHtml += allBtns[i].value;
+//             })
+//         }
+//     }
+// }
+// function clearingDisplay()
+// {
+//     display.innerText = "";
+// }
+
+// function settingTheOperand()
+// {
+//     console.log
+// }
