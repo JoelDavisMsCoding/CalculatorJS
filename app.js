@@ -355,37 +355,3 @@ clearBttn.addEventListener("click", () =>
     storeNumbsFromButtons = "";
     finalCalculation = "";  
 });
-
-// let firstNum = "";
-// let allBtns = 
-// function buttonListeners()
-// {
-//     for (let i = 0; i < allBtns.length; i++)
-//     {
-//         const element = allBtns[i];
-        
-//         if (allBtns[i].value == "clear")
-//         {allBtns[i].addEventListener("click", clearingDisplay)}
-//         else if (allBtns[i].value == "add" || allBtns[i].value == "subtract" || allBtns[i].value == "divide" || allBtns[i].value == "multiply")
-//         {
-//             allBtns[i].addEventListener("click", setting)
-//         }
-
-//         else
-//         {
-//             allBtns[i].addEventListener("click", () => 
-//             {
-//             display.innerHtml += allBtns[i].value;
-//             })
-//         }
-//     }
-// }
-// function clearingDisplay()
-// {
-//     display.innerText = "";
-// }
-
-// function settingTheOperand()
-// {
-//     console.log
-// }
