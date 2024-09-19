@@ -307,7 +307,7 @@ equalsBttn.addEventListener("click", () =>
         if (arrEquation[9] == "+") {equation5 = equation4 + parseFloat(arrEquation[9]);}
         if (arrEquation[9] == "-") {equation5 = equation4 - arrEquation[9];}
     }
-
+    
     if (equation1 != "")
     {
         finalCalculation = equation1
@@ -330,6 +330,18 @@ equalsBttn.addEventListener("click", () =>
     }
 
     displayElement.innerHTML = finalCalculation;
+    value1 = "";
+    value2 = "";
+    value3 = "";
+    value4 = "";
+    value5 = "";
+    value6 = "";
+    value7 = "";
+    value8 = "";
+    value9 = "";
+    arrEquation = [];
+    lastValue =  "";
+    storeNumbsFromButtons = finalCalculation;
 });
 
 deleteButton.addEventListener("click", () =>
