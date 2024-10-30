@@ -347,7 +347,7 @@ equalsBttn.addEventListener("click", () =>
     {
         finalCalculation = equation5
     }
-    if (finalCalculation > 100000000000000)
+    if (finalCalculation > 100000000)
     {
         displayElement.innerHTML = 0;
         value1 = "";
