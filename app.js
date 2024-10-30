@@ -34,7 +34,7 @@ let arrEquation = [];//this will hold the string of numbers or operation unit ea
 let storeNumbsFromButtons = "";
 function NumberLimit()
 {
-    if (storeNumbsFromButtons.length == 16) {storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);};
+    if (storeNumbsFromButtons.length == 13) {storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);};
     displayElement.innerHTML = storeNumbsFromButtons;
 };
 let finalCalculation = "";
@@ -347,7 +347,7 @@ equalsBttn.addEventListener("click", () =>
     {
         finalCalculation = equation5
     }
-    if (finalCalculation > 100000000)
+    if (finalCalculation > 100000000000)
     {
         displayElement.innerHTML = 0;
         value1 = "";
