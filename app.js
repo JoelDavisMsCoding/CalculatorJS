@@ -1,5 +1,6 @@
 //Making variables to hold the buttons
 let displayElement = document.querySelector(".displayScreen h1");
+let displayElement2 = document.querySelector(".displayScreen h3")
 let number0Bttn = document.getElementById("zero");
 let number1Bttn = document.getElementById("one");
 let number2Bttn = document.getElementById("two");
@@ -34,8 +35,11 @@ let arrEquation = [];//this will hold the string of numbers or operation unit ea
 let storeNumbsFromButtons = "";
 function NumberLimit()
 {
-    if (storeNumbsFromButtons.length == 13) {storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);};
-    displayElement.innerHTML = storeNumbsFromButtons;
+    if (storeNumbsFromButtons.length == 13)
+    {   
+        storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);
+        displayElement.innerHTML = storeNumbsFromButtons;
+    }
 };
 let finalCalculation = "";
 let zero = "";
@@ -131,15 +135,16 @@ decimalBttn.addEventListener("click", () =>
     else {displayElement.innerHTML += decimal; storeNumbsFromButtons += decimal;}
     NumberLimit();
 });
-
+    
 subtractBttn.addEventListener("click", () =>
 {   
     subtract = subtractBttn.value;
-    displayElement.innerHTML += subtract;
+    if (displayElement.innerHTML == 0) {displayElement.innerHTML = subtract}
+    else {displayElement.innerHTML += subtract}
     if (value1 == "")
     {
         value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
-        value2 = subtract;
+        value2 = subtract;      
         arrEquation.push(value1);
         arrEquation.push(value2);         
     }
@@ -171,10 +176,12 @@ subtractBttn.addEventListener("click", () =>
     }
     storeNumbsFromButtons = "";
 });
+
 addBttn.addEventListener("click", () =>
 {   
     add = addBttn.value; //giving the add variable the actual value of an additon operator.
     displayElement.innerHTML += add;
+    if (displayElement.innerHTML == "0+") {displayElement.innerHTML = displayElement.innerHTML.slice(0, -1)}
     if (value1 == "")
     {
         value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
@@ -214,6 +221,7 @@ multiplyBttn.addEventListener("click", () =>
 {   
     multiply = multiplyBttn.value;
     displayElement.innerHTML += multiply;
+    if (displayElement.innerHTML == "0*") {displayElement.innerHTML = displayElement.innerHTML.slice(0, -1)}
     if (value1 == "")
     {
         value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
@@ -253,12 +261,13 @@ divideBttn.addEventListener("click", () =>
 {   
     divide = divideBttn.value;
     displayElement.innerHTML += divide;
+    if (displayElement.innerHTML == "0/") {displayElement.innerHTML = displayElement.innerHTML.slice(0, -1)}
     if (value1 == "")
     {
         value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
         value2 = "/";
         arrEquation.push(value1);
-        arrEquation.push(value2);         
+        arrEquation.push(value2);     
     }
     else if (value3 == "") 
     {
@@ -288,6 +297,7 @@ divideBttn.addEventListener("click", () =>
     }
     storeNumbsFromButtons = "";
 });
+
 
 equalsBttn.addEventListener("click", () =>
 {   
@@ -350,6 +360,7 @@ equalsBttn.addEventListener("click", () =>
     if (finalCalculation > 100000000000)
     {
         displayElement.innerHTML = 0;
+        displayElement2.innerHTML = 0;
         value1 = "";
         value2 = "";
         value3 = "";
@@ -368,6 +379,7 @@ equalsBttn.addEventListener("click", () =>
 
     //This section allows the user to keep the equation going after getting the answer to the equation using the answer as the new starting number. 
     displayElement.innerHTML = finalCalculation;
+    displayElement2.innerHTML = finalCalculation;
     value1 = "";
     value2 = "";
     value3 = "";
@@ -386,11 +398,13 @@ deleteButton.addEventListener("click", () =>
 {   
     storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);
     displayElement.innerHTML = storeNumbsFromButtons;
+    displayElement2.innerHTML = displayElement2.innerHTML.slice(0, -1);
 })
 //clears all the data entered completely
 clearBttn.addEventListener("click", () =>
 {
     displayElement.innerHTML = 0;
+    displayElement2.innerHTML = 0;
     value1 = "";
     value2 = "";
     value3 = "";
