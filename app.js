@@ -1,6 +1,5 @@
 //Making variables to hold the buttons
 let displayElement = document.querySelector(".displayScreen h1");
-let displayElement2 = document.querySelector(".displayScreen h3")
 let number0Bttn = document.getElementById("zero");
 let number1Bttn = document.getElementById("one");
 let number2Bttn = document.getElementById("two");
@@ -33,14 +32,9 @@ let lastValue =  "";
 
 let arrEquation = [];//this will hold the string of numbers or operation unit each time the equal sign or a operation unit button(=,+) is pressed.
 let storeNumbsFromButtons = "";
-function NumberLimit()
-{
-    if (storeNumbsFromButtons.length == 13)
-    {   
-        storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);
-        displayElement.innerHTML = storeNumbsFromButtons;
-    }
-};
+let backUpNum = 0;
+let operatorLimiter = ""
+
 let finalCalculation = "";
 let zero = "";
 let one = "";
@@ -57,12 +51,14 @@ let add = "";
 let multiply = "";
 let divide = "";
 let decimal = "";
+
 //Event Listeners for the buttons
 number0Bttn.addEventListener("click", () =>
 {   
     zero = number0Bttn.value; //Give the value of the button to the variable zero to be stored.
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = zero; storeNumbsFromButtons = zero;}
     else {displayElement.innerHTML += zero; storeNumbsFromButtons += zero;}
+    backUpNum = 0;
     NumberLimit();
 });
 number1Bttn.addEventListener("click", () =>
@@ -70,6 +66,7 @@ number1Bttn.addEventListener("click", () =>
     one = number1Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = one; storeNumbsFromButtons = one;}
     else {displayElement.innerHTML += one; storeNumbsFromButtons += one;}
+    backUpNum = 0;
     NumberLimit();
 });
 number2Bttn.addEventListener("click", () =>
@@ -77,6 +74,7 @@ number2Bttn.addEventListener("click", () =>
     two = number2Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = two; storeNumbsFromButtons = two;}
     else {displayElement.innerHTML += two; storeNumbsFromButtons += two;}
+    backUpNum = 0;
     NumberLimit();
 });
 number3Bttn.addEventListener("click", () =>
@@ -84,6 +82,7 @@ number3Bttn.addEventListener("click", () =>
     three = number3Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = three; storeNumbsFromButtons = three;}
     else {displayElement.innerHTML += three; storeNumbsFromButtons += three;}
+    backUpNum = 0;
     NumberLimit();
 });
 number4Bttn.addEventListener("click", () =>
@@ -91,6 +90,7 @@ number4Bttn.addEventListener("click", () =>
     four = number4Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = four; storeNumbsFromButtons = four;}
     else {displayElement.innerHTML += four; storeNumbsFromButtons += four;}
+    backUpNum = 0;
     NumberLimit();
 });
 number5Bttn.addEventListener("click", () =>
@@ -98,6 +98,7 @@ number5Bttn.addEventListener("click", () =>
     five = number5Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = five; storeNumbsFromButtons = five;}
     else {displayElement.innerHTML += five; storeNumbsFromButtons += five;}
+    backUpNum = 0;
     NumberLimit();
 });
 number6Bttn.addEventListener("click", () =>
@@ -105,6 +106,7 @@ number6Bttn.addEventListener("click", () =>
     six = number6Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = six; storeNumbsFromButtons = six;}
     else {displayElement.innerHTML += six; storeNumbsFromButtons += six;}
+    backUpNum = 0;
     NumberLimit();
 });
 number7Bttn.addEventListener("click", () =>
@@ -112,6 +114,7 @@ number7Bttn.addEventListener("click", () =>
     seven = number7Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = seven; storeNumbsFromButtons = seven;}
     else {displayElement.innerHTML += seven; storeNumbsFromButtons += seven;}
+    backUpNum = 0;
     NumberLimit();
 });
 number8Bttn.addEventListener("click", () =>
@@ -119,6 +122,7 @@ number8Bttn.addEventListener("click", () =>
     eight = number8Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = eight; storeNumbsFromButtons = eight;}
     else {displayElement.innerHTML += eight; storeNumbsFromButtons += eight;}
+    backUpNum = 0;
     NumberLimit();
 });
 number9Bttn.addEventListener("click", () =>
@@ -126,6 +130,7 @@ number9Bttn.addEventListener("click", () =>
     nine = number9Bttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = nine; storeNumbsFromButtons = nine;}
     else {displayElement.innerHTML += nine; storeNumbsFromButtons += nine;}
+    backUpNum = 0;
     NumberLimit();
 });
 decimalBttn.addEventListener("click", () =>
@@ -133,174 +138,54 @@ decimalBttn.addEventListener("click", () =>
     decimal = decimalBttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = decimal; storeNumbsFromButtons = decimal;}
     else {displayElement.innerHTML += decimal; storeNumbsFromButtons += decimal;}
+    backUpNum = 0;
     NumberLimit();
 });
+
+if (isNaN(storeNumbsFromButtons[0]) != true) {storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);}
     
 subtractBttn.addEventListener("click", () =>
 {   
+    debugger
     subtract = subtractBttn.value;
     if (displayElement.innerHTML == 0) {displayElement.innerHTML = subtract}
     else {displayElement.innerHTML += subtract}
-    if (value1 == "")
-    {
-        value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
-        value2 = subtract;      
-        arrEquation.push(value1);
-        arrEquation.push(value2);         
-    }
-    else if (value3 == "") 
-    {
-        value3 = storeNumbsFromButtons;
-        value4 = subtract
-        arrEquation.push(value3);
-        arrEquation.push(value4);
-    }
-    else if (value5 == "") 
-    {
-        value5 = storeNumbsFromButtons;
-        value6 = subtract
-        arrEquation.push(value5);
-        arrEquation.push(value6);
-    }
-    else if (value7 == "") 
-    {
-        value7 = storeNumbsFromButtons;
-        value8 = subtract
-        arrEquation.push(value7);
-        arrEquation.push(value8);
-    }
-    else if (value9 == "") 
-    {
-        value9 = storeNumbsFromButtons;
-        arrEquation.push(value9);
-    }
-    storeNumbsFromButtons = "";
+    OperatorProcess(subtract);
+    OperatorLimiter();
 });
 
 addBttn.addEventListener("click", () =>
 {   
+    debugger
     add = addBttn.value; //giving the add variable the actual value of an additon operator.
     displayElement.innerHTML += add;
-    if (displayElement.innerHTML == "0+") {displayElement.innerHTML = displayElement.innerHTML.slice(0, -1)}
-    if (value1 == "")
-    {
-        value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
-        value2 = add;
-        arrEquation.push(value1);
-        arrEquation.push(value2);         
-    }
-    else if (value3 == "") 
-    {
-        value3 = storeNumbsFromButtons;
-        value4 = add
-        arrEquation.push(value3);
-        arrEquation.push(value4);
-    }
-    else if (value5 == "") 
-    {
-        value5 = storeNumbsFromButtons;
-        value6 = add
-        arrEquation.push(value5);
-        arrEquation.push(value6);
-    }
-    else if (value7 == "") 
-    {
-        value7 = storeNumbsFromButtons;
-        value8 = add
-        arrEquation.push(value7);
-        arrEquation.push(value8);
-    }
-    else if (value9 == "") 
-    {
-        value9 = storeNumbsFromButtons;
-        arrEquation.push(value9);
-    }
-    storeNumbsFromButtons = "";
+    if (displayElement.innerHTML == "0+") {displayElement.innerHTML = displayElement.innerHTML.slice(0, -1);}
+    OperatorProcess(add);  
+    OperatorLimiter();
 });
+
 multiplyBttn.addEventListener("click", () =>
 {   
     multiply = multiplyBttn.value;
     displayElement.innerHTML += multiply;
     if (displayElement.innerHTML == "0*") {displayElement.innerHTML = displayElement.innerHTML.slice(0, -1)}
-    if (value1 == "")
-    {
-        value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
-        value2 = multiply;
-        arrEquation.push(value1);
-        arrEquation.push(value2);         
-    }
-    else if (value3 == "") 
-    {
-        value3 = storeNumbsFromButtons;
-        value4 = multiply
-        arrEquation.push(value3);
-        arrEquation.push(value4);
-    }
-    else if (value5 == "") 
-    {
-        value5 = storeNumbsFromButtons;
-        value6 = multiply
-        arrEquation.push(value5);
-        arrEquation.push(value6);
-    }
-    else if (value7 == "") 
-    {
-        value7 = storeNumbsFromButtons;
-        value8 = multiply
-        arrEquation.push(value7);
-        arrEquation.push(value8);
-    }
-    else if (value9 == "") 
-    {
-        value9 = storeNumbsFromButtons;
-        arrEquation.push(value9);
-    }
-    storeNumbsFromButtons = "";
+    OperatorProcess(multiply);
+    OperatorLimiter();
+    
 });
+
 divideBttn.addEventListener("click", () =>
 {   
     divide = divideBttn.value;
     displayElement.innerHTML += divide;
     if (displayElement.innerHTML == "0/") {displayElement.innerHTML = displayElement.innerHTML.slice(0, -1)}
-    if (value1 == "")
-    {
-        value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
-        value2 = "/";
-        arrEquation.push(value1);
-        arrEquation.push(value2);     
-    }
-    else if (value3 == "") 
-    {
-        value3 = storeNumbsFromButtons;
-        value4 = "/"
-        arrEquation.push(value3);
-        arrEquation.push(value4);
-    }
-    else if (value5 == "") 
-    {
-        value5 = storeNumbsFromButtons;
-        value6 = "/"
-        arrEquation.push(value5);
-        arrEquation.push(value6);
-    }
-    else if (value7 == "") 
-    {
-        value7 = storeNumbsFromButtons;
-        value8 = "/"
-        arrEquation.push(value7);
-        arrEquation.push(value8);
-    }
-    else if (value9 == "") 
-    {
-        value9 = storeNumbsFromButtons;
-        arrEquation.push(value9);
-    }
-    storeNumbsFromButtons = "";
+    OperatorProcess(divide);
+    OperatorLimiter();
 });
-
 
 equalsBttn.addEventListener("click", () =>
 {   
+    
     valueLast = storeNumbsFromButtons; //this adds the last number entered because the number is usually caught by the operating unit(+,- etc)
     if (value9 == "") {arrEquation.push(valueLast);}
     //setting up the variables to hold the eaquations for the times the operator button is pressed. It's saved and broken down into sections below.
@@ -309,8 +194,7 @@ equalsBttn.addEventListener("click", () =>
     let equation3 = "";
     let equation4 = "";
     let equation5 = "";
-    
-    
+      
     for (let i = 0; i < arrEquation.length; i++)
     {
         /*This handles the math function. It allows the user to use up to four operating units max and sorts them by sections every time they pick a
@@ -357,10 +241,9 @@ equalsBttn.addEventListener("click", () =>
     {
         finalCalculation = equation5
     }
-    if (finalCalculation > 100000000000)
+    if (finalCalculation > 100000000000) //the user will not be able to make an equation with a sum higher than this amount.
     {
         displayElement.innerHTML = 0;
-        displayElement2.innerHTML = 0;
         value1 = "";
         value2 = "";
         value3 = "";
@@ -379,7 +262,6 @@ equalsBttn.addEventListener("click", () =>
 
     //This section allows the user to keep the equation going after getting the answer to the equation using the answer as the new starting number. 
     displayElement.innerHTML = finalCalculation;
-    displayElement2.innerHTML = finalCalculation;
     value1 = "";
     value2 = "";
     value3 = "";
@@ -396,15 +278,18 @@ equalsBttn.addEventListener("click", () =>
 //deletes the last number of the string being typed(backspace)
 deleteButton.addEventListener("click", () =>
 {   
-    storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);
-    displayElement.innerHTML = storeNumbsFromButtons;
-    displayElement2.innerHTML = displayElement2.innerHTML.slice(0, -1);
+    debugger
+    displayElement.innerHTML = displayElement.innerHTML.slice(0, -1);
+    if (isNaN(storeNumbsFromButtons == false)) //If storenumb is a number run this code.
+    {
+        storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);
+    }
+    else{removeOperator();}
 })
 //clears all the data entered completely
 clearBttn.addEventListener("click", () =>
 {
     displayElement.innerHTML = 0;
-    displayElement2.innerHTML = 0;
     value1 = "";
     value2 = "";
     value3 = "";
@@ -419,3 +304,121 @@ clearBttn.addEventListener("click", () =>
     storeNumbsFromButtons = "";
     finalCalculation = "";  
 });
+
+function NumberLimit()
+{
+    if (storeNumbsFromButtons.length == 13)
+    {   
+        storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);
+        displayElement.innerHTML = displayElement.innerHTML.slice(0, -1);
+    }
+}
+
+function OperatorProcess(operator)
+{
+    
+    if (value1 == "")
+    {
+        if (backUpNum == 0)
+        {
+            value1 = storeNumbsFromButtons; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.   
+        }
+        else
+        {
+            value1 = backUpNum; //I am appending all numbers until a operation unit is entered(+,-, etc) then save string to its own variable.
+        }
+        value2 = operator;
+        arrEquation.push(value1);
+        arrEquation.push(value2);
+        if (value1 == "") {value2 = ""; arrEquation.pop(); arrEquation.pop();}
+    }
+    else if (value3 == "") 
+    {
+        if (backUpNum == 0)
+        {
+            value3 = storeNumbsFromButtons;   
+        }
+        else
+        {
+            value3 = backUpNum;
+        }
+        value4 = operator
+        arrEquation.push(value3);
+        arrEquation.push(value4);
+        if (value3 == "") {value4 = ""; arrEquation.pop(); arrEquation.pop();}
+    }
+    else if (value5 == "") 
+    {
+        if (backUpNum == 0)
+            {
+                value5 = storeNumbsFromButtons;    
+            }
+            else
+            {
+                value5 = backUpNum;
+            }
+        value6 = operator
+        arrEquation.push(value5);
+        arrEquation.push(value6);
+        if (value5 == "") {value6 = ""; arrEquation.pop(); arrEquation.pop();}
+    }
+    else if (value7 == "") 
+    {
+        if (backUpNum == 0)
+        {
+            value7 = storeNumbsFromButtons;    
+        }
+        else
+        {
+            value7 = backUpNum;
+        }
+        value8 = operator
+        arrEquation.push(value7);
+        arrEquation.push(value8);
+        if (value7 == "") {value8 = ""; arrEquation.pop(); arrEquation.pop();}
+    }
+    else if (value9 == "") 
+    {
+        value9 = storeNumbsFromButtons;
+        arrEquation.push(value9);
+    }
+    backUpNum = storeNumbsFromButtons
+    storeNumbsFromButtons = "";
+}
+
+function OperatorLimiter()
+{
+    operatorLimiter = displayElement.innerHTML.slice(-2);
+    for (let i = 0; i < operatorLimiter.length; i++)
+    {
+        for (let j = i + 1; j < operatorLimiter.length; j++)
+        {
+            if (operatorLimiter[i] == operatorLimiter[j])
+            {
+                displayElement.innerHTML = displayElement.innerHTML.slice(0, -1);
+            }
+        }
+    }
+}
+
+function removeOperator()
+{
+    arrEquation.pop();
+    arrEquation.pop();
+    if (value1 != "" && value2 != "")
+    {
+        value1 = "";
+    }
+    else if (value1 != "" && value3 != "" && value4 != "") 
+    {
+        backUpNum = value3;
+    }
+    else if (value3 != "" && value5 != "" && value6 != "") 
+    {
+        backUpNum = value5;
+    }
+    else if (value5 != "" & value7 != "" && value8 != "") 
+    {
+        backUpNum = value7;
+    }
+}
