@@ -185,7 +185,7 @@ divideBttn.addEventListener("click", () =>
 
 equalsBttn.addEventListener("click", () =>
 {   
-    
+    debugger
     valueLast = storeNumbsFromButtons; //this adds the last number entered because the number is usually caught by the operating unit(+,- etc)
     if (value9 == "") {arrEquation.push(valueLast);}
     //setting up the variables to hold the eaquations for the times the operator button is pressed. It's saved and broken down into sections below.
@@ -283,6 +283,7 @@ deleteButton.addEventListener("click", () =>
     if (isNaN(storeNumbsFromButtons == false)) //If storenumb is a number run this code.
     {
         storeNumbsFromButtons = storeNumbsFromButtons.slice(0, -1);
+        backUpNum = backUpNum.slice(0, -1);
     }
     else{removeOperator();}
 })
@@ -405,20 +406,24 @@ function removeOperator()
 {
     arrEquation.pop();
     arrEquation.pop();
-    if (value1 != "" && value2 != "")
+
+    if (isNaN(arrEquation[0]))
     {
         value1 = "";
+        value2 ="";
     }
-    else if (value1 != "" && value3 != "" && value4 != "") 
+    else if (isNaN(arrEquation[2]))
     {
-        backUpNum = value3;
+        value3 = "";
+        value4 = "";
     }
-    else if (value3 != "" && value5 != "" && value6 != "") 
+    else if (isNaN(arrEquation[4])) 
     {
-        backUpNum = value5;
+        value5 = "";
+        value6 = "";
     }
-    else if (value5 != "" & value7 != "" && value8 != "") 
+    else if (isNaN(arrEquation[6])) 
     {
-        backUpNum = value7;
+        value7 = "";
     }
 }
